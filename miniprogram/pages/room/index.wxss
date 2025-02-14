@@ -1,0 +1,193 @@
+@import "../../common/index.wxss";
+
+.invite-btn {
+  margin-top: 40px;
+}
+
+.inputnumber {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 0px 6px;
+  font-size: 44rpx;
+  border: 1px solid rgb(187, 187, 187);
+  height: 100rpx;  
+}
+.weui-half-screen-dialog__bd.dialog--weui-half-screen-dialog__bd {
+  padding-bottom: 0px;
+}
+.weui-half-screen-dialog__ft.dialog--weui-half-screen-dialog__ft {
+  padding-bottom: 20px;
+}
+.needcheck-item {
+  border: 1px solid red;
+  border-radius: 6px;
+}
+.hidecheckinfo {
+  display: none;
+}
+.footer-opt-show {
+  opacity: 0.5;
+}
+.footer-opt-item1 {
+  display: flex;
+  flex-direction: column;  
+  align-items:flex-start;
+  gap: 4px;
+  opacity: 0.4;
+}
+.footer-opt-item2 {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-end;
+  gap: 4px;  
+  opacity: 0.4;
+}
+.optbtn-item-wrapper {  
+  opacity: 0;
+  padding: 2px;  
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  gap: 4px;  
+}
+.footer-opt-show1 {
+  opacity: 1 !important;
+  transition: opacity .3s;
+}
+.footer-opt-show2 {
+  opacity: 1 !important;
+  transition: opacity .3s;
+}
+.optbtn-item {
+  border-radius: 7px;
+  border: 1px solid rgb(36, 36, 36);
+  font-weight: bold;
+  background-color: rgb(94, 94, 94);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+.closex {
+  font-size: 20px;
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+}
+.opt-btn {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 130rpx;
+  background-color: rgb(94, 94, 94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;  
+}
+.page {
+  position: relative;
+}
+.myopt {
+}
+.footer-opt-blank {
+  height: 130rpx;  
+}
+.footer-opt {
+  display: flex;
+  justify-content: space-between;  
+  position: fixed;
+  width: calc(100% - 30px);
+  bottom: 10px;
+  align-items: flex-end;
+}
+.weui-agree__link {
+  display: inline;
+  color: var(--weui-LINK);
+}
+.buyinfo-wrapper {
+  padding-bottom: 8px;
+  display: none;
+}
+.buyinfo-wrapper-show {
+  display: block;
+}
+.oldbuyinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 15px;
+  color: rgb(150, 150, 150);
+}
+.coltitle {
+  font-weight: bold;
+  color: rgb(65, 65, 65);
+}
+.kind-list-item-hd.kind-list-item-hd-show {
+  opacity: 1 !important;  
+}
+.kind-list-item-hd.kind-list-item-hd-show .buyin {
+  opacity: 0.2 !important;
+}
+.kind-list-item-hd.kind-list-item-hd-show .total {
+  opacity: 0.2 !important;
+}
+.kind-list-item-hd.kind-list-item-hd-show .profit {
+  opacity: 0.2 !important;
+}
+.buyinfo {
+  display: flex;
+  padding: 0px 15px;
+  justify-content: space-between;
+}
+.buyinfo-br {
+  height: 1px;
+  background-color: red;
+  margin: 8px 0px;
+}
+.buyinfo1 {
+  display: flex;
+  align-items: center;
+}
+.cancelbtn {
+  color: rgb(46, 46, 46) !important;  
+}
+.confirmbtn {
+  background-color: rgb(95, 95, 95) !important;
+  border: 1px solid rgb(95, 95, 95) !important;
+  color: white !important;  
+}
+.buyinfo-count {
+  font-weight: bold;
+  color: red;
+}
+.buyinchecktips {
+  padding: 0px 15px;  
+  display: flex;  
+  color: rgb(161, 161, 161);  
+  font-size: small;
+}
+.kind-list-item-hd-show .player-info {
+  color: black !important;
+}
+.player-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 10px;  
+ }
+ .buyin {
+   width: 100rpx;
+   text-align: center;
+ }
+ .total {
+  width: 150rpx;
+  text-align: center;
+ }
+ .profit {
+  width: 100rpx;
+  text-align: center;
+ }  

@@ -1,0 +1,98 @@
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="index">
+    <view class="index-bd">
+      <view class="kind-list {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">
+        <view class="kind-list-item">
+          <view class="kind-list-item-hd">
+            <view class="player-info coltitle">玩家信息</view>
+            <view class="buyin coltitle">买入</view>
+            <view class="total coltitle">手上码量</view>            
+            <view class="profit coltitle">盈亏</view>
+          </view>
+        </view>
+
+        <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+          <view class="kind-list-item {{item.needCheck ? 'needcheck-item' : ''}}">
+            <view id="{{item.id}}" class="kind-list-item-hd {{item.needCheck ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+              <view class="player-info">
+                <image class="avatar" src="resources/pic/default-avatar.jpg"></image>
+                <view class="kind-list-text">{{item.name}}</view>
+              </view>              
+              <view class="buyin">{{item.allBuyin}}</view>
+              <view class="total">{{item.totalCount}}</view>
+              <view class="profit">{{item.profitCount}}</view>
+            </view>
+            <view class="buyinfo-wrapper {{item.needCheck || item.open ? 'buyinfo-wrapper-show' : ''}}">
+              <view class="oldbuyinfo" wx:for-items="{{item.buyinList}}" wx:key="index">
+                <view>买入：{{item.buyinCount}}</view>
+                <view>时间：{{item.buyinTime}}</view>
+              </view>
+              <view class="{{!item.needCheck ? 'hidecheckinfo' : ''}}">
+                <view class="buyinfo-br"></view>
+                <view class="buyinfo">                  
+                  <view class="buyinfo1">本次买入：<view class="buyinfo-count">{{item.buyinCount}}</view></view>
+                  <view>时间：{{item.buyinTime}}</view>
+                </view>
+                <view class="buyinchecktips">请房主确认该买入</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <button type="default" plain="true" class="invite-btn {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">邀请好友加入</button>      
+
+      <view class="footer-opt-blank">
+      </view>
+      <view class="footer-opt">
+        <view class="footer-opt-item1 {{showManagerOpt ? 'footer-opt-show1' : ''}}">
+          <view class="optbtn-item-wrapper {{showManagerOpt ? 'footer-opt-show1' : ''}}">
+            <view class="optbtn-item" bindtap="handleGiveInitChips">发放起始筹码</view>
+            <view class="optbtn-item">确认玩家买入</view>
+            <view class="optbtn-item">核算并结束</view>            
+          </view>
+          <view class="manager opt-btn" bindtap="handleClickManagerOpt">
+            <view>
+              <view wx:if="{{!showManagerOpt}}">
+                <view>房主</view>
+                <view>操作</view>
+              </view>
+              <view wx:else>
+                <view class="closex">X</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+
+        <mp-halfScreenDialog show="{{showSetChipsCount}}" closabled="{{false}}">
+          <view slot="title">{{setChipsFrom}}</view>
+          <view slot="desc" class="dialog-desc-wrapper">
+            <input class="inputnumber" type="number" placeholder="请输入数字" />
+          </view>
+          <view slot="footer">            
+            <button type="default" plain="true" class="cancelbtn weui-btn" bindtap="handleCancelSetChips">取消</button>
+            <button type="default" plain="true" class="weui-btn confirmbtn" bindtap="handleConfirmSetChips">确认</button>              
+          </view>
+        </mp-halfScreenDialog>
+        <view class="footer-opt-item2 {{showPlayerOpt ? 'footer-opt-show2' : ''}}">
+          <view class="optbtn-item-wrapper {{showPlayerOpt ? 'footer-opt-show2' : ''}}">
+            <view class="optbtn-item" bindtap="handleBuyinChips">买入筹码</view>
+            <view class="optbtn-item" bindtap="handleChipsInHand">设置手上码量</view>            
+          </view>
+          <view class="myopt opt-btn" bindtap="handleClickPlayerOpt">
+            <view>
+              <view wx:if="{{!showPlayerOpt}}">
+                <view>玩家</view>
+                <view>操作</view>
+              </view>
+              <view wx:else>
+                <view class="closex">X</view>
+              </view>
+            </view>            
+          </view>
+        </view>        
+      </view>
+    </view>
+  </view>
+</view>
