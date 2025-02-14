@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
-  },
-  "navigationBarBackgroundColor": "#fff"
+    "mp-form-page": "weui-miniprogram/form-page/form-page",
+    "mp-form": "weui-miniprogram/form/form"
+  }
 }

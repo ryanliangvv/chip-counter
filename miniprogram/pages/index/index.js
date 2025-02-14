@@ -1,36 +1,20 @@
 const { envList } = require("../../envList");
-const { QuickStartPoints, QuickStartSteps } = require("./constants");
 
 Page({
-  data: {
-    knowledgePoints: QuickStartPoints,
-    steps: QuickStartSteps,
+  data: {  
   },
-
-  copyCode(e) {
-    const code = e.target?.dataset?.code || '';
-    wx.setClipboardData({
-      data: code,
-      success: () => {
-        wx.showToast({
-          title: '已复制',
-        })
+  onLoad: function(options) {
+    const db = wx.cloud.database();
+    const roomId = options.id;
+    db.collection('rooms').doc(roomId).get({
+      success: res => {
+        this.setData({
+          room: res.data
+        });
       },
-      fail: (err) => {
-        console.error('复制失败-----', err);
+      fail: err => {
+        wx.showToast({ title: '加载房间信息失败', icon: 'none' });
       }
-    })
-  },
-
-  discoverCloud() {
-    wx.switchTab({
-      url: '/pages/examples/index',
-    })
-  },
-
-  gotoGoodsListPage() {
-    wx.navigateTo({
-      url: '/pages/goods-list/index',
-    })
-  },
+    });
+  }  
 });

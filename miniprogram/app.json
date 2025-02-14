@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/room/index",
     "pages/user-center/index"    
   ],
@@ -7,7 +8,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "Poker计分器",
     "navigationBarTextStyle": "black"
   },
   "useExtendedLib": {
@@ -23,11 +24,11 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/room/index",
+        "pagePath": "pages/index/index",
         "text": "房间",
         "iconPath": "images/icons/home.png",
         "selectedIconPath": "images/icons/home-active.png"
-      },      
+      },
       {
         "pagePath": "pages/user-center/index",
         "text": "我",
