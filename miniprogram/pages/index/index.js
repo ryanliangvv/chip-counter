@@ -3,18 +3,13 @@ const { envList } = require("../../envList");
 Page({
   data: {  
   },
-  onLoad: function(options) {
-    const db = wx.cloud.database();
-    const roomId = options.id;
-    db.collection('rooms').doc(roomId).get({
-      success: res => {
-        this.setData({
-          room: res.data
-        });
-      },
-      fail: err => {
-        wx.showToast({ title: '加载房间信息失败', icon: 'none' });
-      }
-    });
-  }  
+  onLoad: function(options) {    
+  },
+  handleCreateRoom() {    
+    wx.cloud.callFunction({ name: 'room', data: { type: 'createRoom'},
+    }).then(res => {
+      const { roomNo } = res.result;      
+      wx.redirectTo({url: `/pages/room/index?roomId=${roomNo}`})
+    }).catch(console.error)
+  }
 });

@@ -8,7 +8,7 @@
         <view slot="button" class="btn-wrapper">        
           <button class="plainbtn" type="default" plain="true" bindtap="submitForm">进入房间</button>
           <view class="linebr"></view>
-          <button class="primarybtn" type="default" plain="true" bindtap="submitForm">创建房间</button>        
+          <button class="primarybtn" type="default" plain="true" bindtap="submitForm" bindtap="handleCreateRoom">创建房间</button>        
         </view>
       </view>      
     </mp-form>      
