@@ -21,12 +21,9 @@ exports.main = async (event, context) => {
     const ret2 = await roomCol.where({ _id: roomId }).get();
     if (ret2.data && ret2.data.length) {
       const r = ret2.data[0]
-      const isOwner = r._openid == userId
       room = {
-        roomId: r._id,
         roomNo: r.roomNo,
         password: r.password,
-        isOwner
       }
     }
   }

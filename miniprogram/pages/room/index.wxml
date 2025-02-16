@@ -78,7 +78,8 @@
         <view class="footer-opt-item2 {{showPlayerOpt ? 'footer-opt-show2' : ''}}">
           <view class="optbtn-item-wrapper {{showPlayerOpt ? 'footer-opt-show2' : ''}}">
             <view class="optbtn-item" bindtap="handleBuyinChips">买入筹码</view>
-            <view class="optbtn-item" bindtap="handleChipsInHand">设置手上码量</view>            
+            <view class="optbtn-item" bindtap="handleChipsInHand">设置手上码量</view>
+          <view class="optbtn-item" bindtap="handleBackIndex">返回首页</view>
           </view>
           <view class="myopt opt-btn" bindtap="handleClickPlayerOpt">
             <view>

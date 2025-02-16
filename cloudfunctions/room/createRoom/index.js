@@ -63,9 +63,9 @@ async function createRoom(userId) {
   const oldRoomIds = res.data.map(e=>e._id)
   if (!oldRoomIds.length) return
   console.log("oldRoomIds", oldRoomIds)
-  // 删除用户和房间对应关系的记录
-  userRoomCol.where({ roomId: db.command.in(oldRoomIds)}).remove()
-  // 将该用户的其他所有房间删除
+  // 删除所有用户和该房间对应关系的记录
+  await userRoomCol.where({ roomId: db.command.in(oldRoomIds)}).remove()
+  // 删除该用户的所有房间
   await roomCol.where({ _openid: userId }).remove();
 }
 exports.removeUserCreatedRooms = removeUserCreatedRooms

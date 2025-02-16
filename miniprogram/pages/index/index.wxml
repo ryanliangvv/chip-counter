@@ -1,14 +1,30 @@
 
-<mp-form-page title="Poker计分器" subtitle="欢迎使用Poker计分器，遇事不决就All In。坚决反对任何形式的赌博行为，请理性娱乐">
+<mp-form-page title="Poker计分器" subtitle="欢迎使用Poker计分器。坚决反对任何形式的赌博行为，请理性娱乐">
     <mp-form id="form" rules="{{rules}}" models="{{formData}}" >
       <view class="form-wrapper">
-        <input name="roomNo" class="form-item" placeholder="请输入房间号" required />
-        <input name="roomPassword" class="form-item" placeholder="请输入房间密码" required />
+        <view class="input-item">
+          <view class="input-label">房间号</view>
+          <input disabled="{{isInRoom}}" name="roomNo" class="inputw {{isInRoom ? 'inroom' : ''}}" placeholder="请输入房间号" required value="{{roomNo}}"  />
+        </view>
 
-        <view slot="button" class="btn-wrapper">        
-          <button class="plainbtn" type="default" plain="true" bindtap="submitForm">进入房间</button>
+        <view class="input-item">
+          <view class="input-label">密码</view>
+          <input disabled="{{isInRoom}}" name="password" class="inputw {{isInRoom ? 'inroom' : ''}}" placeholder="请输入密码" required value="{{password}}" />
+        </view>
+        
+
+        <view slot="button" class="btn-wrapper">
+          <button wx:if="{{isInRoom}}" class="plainbtn" type="default" plain="true" bindtap="handleReturnRoom">回到房间</button>
+          <button wx:else class="plainbtn" type="default" plain="true" bindtap="handleEnterRoom">进入房间</button>
+
+          <view wx:if="{{isInRoom}}" style="width: 100%;">
+            <button wx:if="{{isOwner}}" class="quitbtn" type="default" plain="true" bindtap="handleCloseRoom">关闭房间</button>
+            <button wx:else class="quitbtn" type="default" plain="true" bindtap="handleQuitRoom">退出房间</button>
+          </view>
+          
+          
           <view class="linebr"></view>
-          <button class="primarybtn" type="default" plain="true" bindtap="submitForm" bindtap="handleCreateRoom">创建房间</button>        
+          <button wx:if="{{!isInRoom}}" class="createbtn" type="default" plain="true" bindtap="submitForm" bindtap="handleCreateRoom">创建房间</button>
         </view>
       </view>      
     </mp-form>      

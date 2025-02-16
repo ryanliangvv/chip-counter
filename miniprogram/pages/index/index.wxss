@@ -6,7 +6,7 @@ page {
   background-color: #fff;
 }
 .weui-form.page--weui-form {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .weui-form__control-area.page--weui-form__control-area {
   margin: 40px 0px 10px 0px;
@@ -35,7 +35,32 @@ page {
   align-items: center;
   justify-content: center;
 }
-.primarybtn { 
+.quitbtn {
+  color: rgb(255, 255, 255) !important;    
+  margin: 0px !important;
+  width: 100% !important;
+  height: 46px  !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(95, 95, 95) !important;
+  border: 1px solid rgb(95, 95, 95) !important;
+}
+.input-item {
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: space-between; */
+  margin-bottom: 20px;
+}
+.input-label {
+  width: 90px;
+  font-size: 28rpx;
+  color: rgb(65, 65, 65);
+}
+.inroom {
+  color: rgb(136, 136, 136);
+}
+.createbtn { 
   margin: 0px !important;
   background-color: rgb(95, 95, 95) !important;
   border: 1px solid rgb(95, 95, 95) !important;
@@ -54,13 +79,12 @@ page {
 .form-wrapper {  
   padding: 0px 50px;  
 }
-.form-item {
+.inputw {
   width: 100%;
   box-sizing: border-box;
   border-radius: 6px;
   padding: 0px 12px;
   font-size: 40rpx;
   border: 1px solid rgb(187, 187, 187);
-  height: 94rpx;  
-  margin-bottom: 20px;
+  height: 94rpx;
 }
