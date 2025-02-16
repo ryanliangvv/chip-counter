@@ -1,3 +1,4 @@
+<wxs src="../../util/format.wxs" module="format"></wxs>
 <view class="page" data-weui-theme="{{theme}}">
   <view class="index">
     <view class="index-bd">
@@ -11,16 +12,16 @@
           </view>
         </view>
 
-        <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <block wx:for-items="{{list}}" wx:key="{{item.userId}}">
           <view class="kind-list-item {{item.needCheck ? 'needcheck-item' : ''}}">
-            <view id="{{item.id}}" class="kind-list-item-hd {{item.needCheck ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view id="{{item.userId}}" class="kind-list-item-hd {{item.needCheck ? 'kind-list-item-hd-show' : ''}}" bindtap="handleOpenLisetItem">
               <view class="player-info">
-                <image class="avatar" src="resources/pic/default-avatar.jpg"></image>
-                <view class="kind-list-text">{{item.name}}</view>
+                <image class="avatar" src="{{item.avatar || 'resources/pic/default-avatar.jpg'}}"></image>
+                <view class="kind-list-text">{{item.nickname}}</view>
               </view>              
-              <view class="buyin">{{item.allBuyin}}</view>
-              <view class="total">{{item.totalCount}}</view>
-              <view class="profit">{{item.profitCount}}</view>
+              <view class="buyin">{{ format.formatChipsCount(item.allBuyin) }}</view>
+              <view class="total">{{ format.formatChipsCount(item.totalCount) }}</view>
+              <view class="profit">{{ format.formatChipsCount(item.totalCount - item.allBuyin) }}</view>
             </view>
             <view class="buyinfo-wrapper {{item.needCheck || item.open ? 'buyinfo-wrapper-show' : ''}}">
               <view class="oldbuyinfo" wx:for-items="{{item.buyinList}}" wx:key="index">

@@ -54,7 +54,7 @@ async function createRoom(userId) {
       _openid: userId      
     }
   });  
-  return roomNo
+  return roomId
 }
 
  async function removeUserCreatedRooms(userId)  {
@@ -77,9 +77,9 @@ exports.main = async (event, context) => {
   const userId = OPENID
   console.log("userId", userId)
   await removeUserCreatedRooms(userId)  
-  const roomNo = await createRoom(userId)  
+  const roomId = await createRoom(userId)  
 
   return {
-    roomNo,
+    roomId,
   }
 }

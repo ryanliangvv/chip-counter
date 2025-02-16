@@ -1,9 +1,17 @@
-const util = require('../../util/util')
-const formatChipsCount = util.formatChipsCount
-
 Page({
+  onLoad: function(options) {   
+    wx.cloud.callFunction({ name: 'room', data: { type: 'getCurrRoom'} }).then(res => {
+      const { room } = res.result;
+      // 当前用户正在房间中
+      if (!room || room.roomId != options.roomId) {
+        wx.showToast({ icon: 'error', title: '房间已关闭'});
+        setTimeout(()=>{ wx.switchTab({ url: "/pages/index/index" }) }, 2000)
+      } else {
+        this.handleInitData()
+      }
+    }).catch(console.error)
+  },
   onShow() {},
-  
   onShareAppMessage() {
     return {
       title: '邀请你加入Poker计分房间',
@@ -13,7 +21,6 @@ Page({
   onShareTimeline() {
     '邀请你加入Poker计分房间'
   },
-
   data: {
     showManagerOpt: false,
     showPlayerOpt: false,
@@ -22,12 +29,12 @@ Page({
 
     list: [
       {
-        id: '1',
-        name: '炸弹玩家玩家玩家玩家',        
+        userId: '1',
+        avatar: '',
+        nickname: '炸弹玩家玩家玩家玩家',
         open: false,
-        allBuyin: formatChipsCount(1000),
-        totalCount: formatChipsCount(3000),
-        profitCount: formatChipsCount(2000),
+        allBuyin: 1000,
+        totalCount: 3000,
         buyinList: [
           {buyinCount: 200, buyinTime: "21:00:00"},
           {buyinCount: 200, buyinTime: "21:00:00"},
@@ -39,29 +46,13 @@ Page({
         buyinTime: null,
       },
       {
-        id: '3',
-        name: '炸弹玩家玩家玩家玩家',        
-        open: false,
-        allBuyin: formatChipsCount(3000),
-        totalCount: formatChipsCount(1000),
-        profitCount: formatChipsCount(-2000),
-        buyinList: [
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-        ],
-        needCheck: false,
-        buyinCount: 0,
-        buyinTime: null,
-      },
-      {
-        id: '2',
-        name: '玩家1',
+        userId: '1',
+        avatar: '',
+        nickname: '炸弹玩家1',
         open: false,        
-        allBuyin: formatChipsCount(3000),
-        totalCount: formatChipsCount(1000),
-        profitCount: formatChipsCount(-2000),
+        allBuyin: 3000,
+        totalCount: 1000,
+        profitCount: -2000,
         buyinList: [
           {buyinCount: 200, buyinTime: "21:00:00"},
           {buyinCount: 200, buyinTime: "21:00:00"},
@@ -72,14 +63,15 @@ Page({
         buyinCount: 200,
         buyinTime: "21:00:00",
       },       
-    ],
-    theme: 'light'
+    ]
   },
-
-  onLoad() {
+  handleInitData() {
+    // 获取并设置初始数据
+    // wx.cloud.callFunction({ name: 'room', data: { type: 'createRoom'} }).then(res => {
+      
+    // }).catch(console.error)
   },
-
-  kindToggle(e) {
+  handleOpenLisetItem(e) {
     const id = e.currentTarget.id
     const list = this.data.list
     for (let i = 0, len = list.length; i < len; ++i) {
@@ -89,12 +81,8 @@ Page({
         list[i].open = false
       }
     }
-    this.setData({
-      list
-    })
-    wx.reportAnalytics('click_view_programmatically', {})
+    this.setData({ list })
   },
-  
   setShowPlayerOpt(newVal) {
     let newData = { showPlayerOpt: newVal }    
     if (newVal) {

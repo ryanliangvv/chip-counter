@@ -29,13 +29,13 @@ Page({
   },
   handleCreateRoom() {    
     wx.cloud.callFunction({ name: 'room', data: { type: 'createRoom'} }).then(res => {
-      const { roomNo } = res.result;      
-      wx.redirectTo({url: `/pages/room/index?roomId=${roomNo}`})
+      const { roomId } = res.result;      
+      wx.redirectTo({url: `/pages/room/index?roomId=${roomId}`})
     }).catch(console.error)
   },
   handleReturnRoom() {
-    const roomNo = this.data.roomNo
-    wx.redirectTo({url: `/pages/room/index?roomId=${roomNo}`})
+    const roomId = this.data.roomId
+    wx.redirectTo({url: `/pages/room/index?roomId=${roomId}`})
   },
   handleQuitRoom() {
     const self = this
