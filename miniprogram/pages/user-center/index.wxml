@@ -4,22 +4,12 @@
   <view class="main_content">
     <view class="userinfo_container">
       <image class="avatar" src="../../images/icons/default-avatar.jpg" bind:tap="getOpenId" mode="widthFix" />
-      <block wx:if="{{ !openId }}">
-        <view class="username" bind:tap="getOpenId">未设置昵称</view>
-      </block>
-      <block wx:else>
-        <view class="username">openId: {{ openId }}</view>
-      </block>
+      <block>
+        <view class="username">未设置昵称</view>
+      </block>      
     </view>
 
-    <view class="settings_container">
-      <view class="setting_item">
-        <view class="left">
-          <image class="setting_icon" src="../../images/icons/setting.svg" />
-          <view class="setting_text">信息设置</view>
-        </view>
-        <image class="arrow_icon" src="../../images/arrow.svg" />
-      </view>      
+    <view class="settings_container">      
       <view class="setting_item">
         <view class="left">
           <image class="setting_icon" src="../../images/icons/customer-service.svg" />          
@@ -28,14 +18,7 @@
           </button>
         </view>
         <image class="arrow_icon" src="../../images/arrow.svg" />
-      </view>
-      <!-- <view class="setting_item" bind:tap="gotoWxCodePage">
-        <view class="left">
-          <image class="setting_icon" src="../../images/icons/share.svg" />
-          <view class="setting_text">分享小程序</view>
-        </view>
-        <image class="arrow_icon" src="../../images/arrow.svg" />
-      </view> -->
+      </view>      
     </view>
   </view>  
 </view>

@@ -5,7 +5,7 @@
       <view class="kind-list {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">
         <view class="kind-list-item">
           <view class="kind-list-item-hd">
-            <view class="player-info coltitle">玩家信息</view>
+            <view class="player-info coltitle">玩家</view>
             <view class="buyin coltitle">买入</view>
             <view class="total coltitle">手上码量</view>            
             <view class="profit coltitle">盈亏</view>

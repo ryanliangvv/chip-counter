@@ -1,0 +1,39 @@
+<wxs src="../../util/format.wxs" module="fm"></wxs>
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="index">    
+    <view class="index-bd">
+    <view class="gametime">对局时间：{{fm.formatDate(gameTime, 'yyyy-MM-dd HH:mm') }}</view>
+      
+      <view class="kind-list {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">
+        <view class="kind-list-item">
+          <view class="kind-list-item-hd">
+            <view class="rank coltitle">排名</view>
+            <view class="player-info coltitle">玩家</view>
+            <view class="buyin coltitle">买入</view>
+            <view class="profit coltitle">盈亏</view>
+          </view>
+        </view>
+
+        <block wx:for-index="index" wx:for-items="{{list}}" wx:key="{{item.userId}}">
+          <view class="kind-list-item {{item.open ? 'needcheck-item' : ''}}">
+            <view id="{{item.userId}}" class="kind-list-item-hd {{item.needCheck ? 'kind-list-item-hd-show' : ''}}" bindtap="handleOpenListItem">
+              <view class="rank">{{index+1}}</view>
+              <view class="player-info">
+                <view class="kind-list-text">{{item.nickname}}</view>
+              </view>
+              <view class="buyin">{{ fm.formatChipsCount(fm.calcAllBuyin(item.buyinList)) }}</view>
+              <!-- <view class="total">{{ fm.formatChipsCount(item.totalCount) }}</view> -->
+              <view class="profit">{{ fm.formatChipsCount(item.totalCount - fm.calcAllBuyin(item.buyinList)) }}</view>
+            </view>
+            <view class="buyinfo-wrapper {{item.needCheck || item.open ? 'buyinfo-wrapper-show' : ''}}">
+              <view class="oldbuyinfo" wx:for-items="{{item.buyinList}}" wx:key="index">
+                <view>买入：{{item.buyinCount}}</view>
+                <view>时间：{{item.buyinTime}}</view>
+              </view>
+            </view>            
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

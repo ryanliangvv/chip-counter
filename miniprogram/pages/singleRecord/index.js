@@ -239,5 +239,20 @@ Page({
       });
       return
     }
+    // 将结果存入本地，跳到展示排名页        
+    const gameResult = {
+      time: new Date(),
+      list: this.data.list,
+    }
+    let newGameResults = [gameResult]
+    const storedGameResults = wx.getStorageSync('gameResults');
+    if (storedGameResults) {
+      newGameResults = [gameResult, ...storedGameResults]
+    }
+    // 只保存近期10次的记录
+    newGameResults = newGameResults.slice(0, 10);
+    wx.setStorageSync('gameResults', newGameResults);
+    this.setData({ showManagerOpt: false })
+    wx.navigateTo({ url: "/pages/gameResultDetail/index?i=0" })
   },
 })

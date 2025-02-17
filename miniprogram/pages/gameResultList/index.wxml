@@ -1,0 +1,22 @@
+<!-- pages/me/index.wxml -->
+<wxs src="../../util/format.wxs" module="fm"></wxs>
+<view class="page_container">  
+  <view class="main_content">
+    <view class="settings_container">      
+      <!-- <view class="setting_item">
+        <view class="left">
+          <image class="setting_icon" src="../../images/icons/customer-service.svg" />          
+          <button open-type="contact" class="contact-button">
+            对局记录
+          </button>
+        </view>
+      </view> -->
+      
+      <view id="{{item.time}}" class="list-item" wx:for-items="{{gameResults}}" wx:key="{{item.time}}" bindtap="handeViewItemDetail">
+        <view>时间: {{fm.formatDate(item.time, 'yyyy-MM-dd HH:mm') }}</view>
+        <view>人数: {{item.list.length}}</view>
+        <image class="arrow_icon" src="../../images/arrow.svg" />
+      </view>
+    </view>
+  </view>  
+</view>
