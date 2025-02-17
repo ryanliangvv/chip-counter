@@ -242,7 +242,9 @@ Page({
     // 将结果存入本地，跳到展示排名页        
     const gameResult = {
       time: new Date(),
-      list: this.data.list,
+      list: this.data.list.map(e=>{
+        return Object.assign({}, e, {open: false})
+      }),
     }
     let newGameResults = [gameResult]
     const storedGameResults = wx.getStorageSync('gameResults');
