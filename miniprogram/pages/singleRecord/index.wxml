@@ -1,0 +1,85 @@
+<wxs src="../../util/format.wxs" module="fm"></wxs>
+<view class="page" data-weui-theme="{{theme}}">
+  <view class="index">
+    <view class="index-bd">
+      <view class="kind-list {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">
+        <view class="kind-list-item">
+          <view class="kind-list-item-hd">
+            <view class="player-info coltitle">玩家信息</view>
+            <view class="buyin coltitle">买入</view>
+            <view class="total coltitle">手上码量</view>            
+            <!-- <view class="profit coltitle">盈亏</view> -->
+          </view>
+        </view>
+
+        <block wx:for-items="{{list}}" wx:key="{{item.userId}}">
+          <view class="kind-list-item {{item.open ? 'needcheck-item' : ''}}">
+            <view id="{{item.userId}}" class="kind-list-item-hd {{item.needCheck ? 'kind-list-item-hd-show' : ''}}" bindtap="handleOpenListItem">
+              <view class="player-info">
+                <view class="kind-list-text">{{item.nickname}}</view>
+              </view>
+              <view class="buyin">{{ fm.formatChipsCount(fm.calcAllBuyin(item.buyinList)) }}</view>
+              <view class="total">{{ fm.formatChipsCount(item.totalCount) }}</view>
+              <!-- <view class="profit">{{ fm.formatChipsCount(item.totalCount - fm.calcAllBuyin(item.buyinList)) }}</view> -->
+            </view>
+            <view class="buyinfo-wrapper {{item.needCheck || item.open ? 'buyinfo-wrapper-show' : ''}}">
+              <view class="oldbuyinfo" wx:for-items="{{item.buyinList}}" wx:key="index">
+                <view>买入：{{item.buyinCount}}</view>
+                <view>时间：{{item.buyinTime}}</view>
+              </view>
+              <view class="{{!item.open ? 'hidecheckinfo' : ''}}">
+                <view class="buyinfo-br"></view>
+                <view class="inner-opt-wrapper">
+                  <button id="{{item.userId}}" data-nickname="{{item.nickname}}" type="default" plain="true" class="inner-opt delbtn" bindtap="handleDelPlayer">删</button>
+                  <button id="{{item.userId}}" data-nickname="{{item.nickname}}" type="default" plain="true" class="inner-opt" bindtap="handleSetChipsInhand">设置码量</button>
+                  <button id="{{item.userId}}" data-nickname="{{item.nickname}}" type="default" plain="true" class="inner-opt" bindtap="handleSetBuyin">设置买入</button>
+                </view>                
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <mp-halfScreenDialog show="{{showAddPlayer}}" closabled="{{true}}">
+        <view slot="title">添加玩家</view>
+        <view slot="desc" class="dialog-addplayer-wrapper">
+          <input class="inputnumber" placeholder="请输入昵称" value="{{newUserNickname}}" bindinput="handleNicknameChange" />
+          <button type="default" plain="true" class="weui-btn confirmbtn" bindtap="handleConfirmAddPlayer">确认</button>
+        </view>        
+      </mp-halfScreenDialog>
+      <button type="default" plain="true" bindtap="handleOpenAddPlayer" class="invite-btn {{(showManagerOpt|| showPlayerOpt)? 'footer-opt-show' : ''}}">添加玩家</button>
+      <view class="footer-opt-blank">
+      </view>
+      <view class="footer-opt">
+        <mp-halfScreenDialog show="{{showSetChipsCount}}" closabled="{{false}}">
+          <view slot="title">{{setChipsTitle}}</view>
+          <view slot="desc" class="dialog-desc-wrapper">
+            <input class="inputnumber" type="number" value="{{setChipsCount}}" placeholder="请输入数字" bindinput="handleSetChipsCountChange"/>
+          </view>
+          <view slot="footer">            
+            <button type="default" plain="true" class="cancelbtn weui-btn" bindtap="handleCancelSetChips">取消</button>
+            <button type="default" plain="true" class="weui-btn confirmbtn" bindtap="handleConfirmSetChips">确认</button>              
+          </view>
+        </mp-halfScreenDialog>
+
+        <view class="footer-opt-item1 {{showManagerOpt ? 'footer-opt-show1' : ''}}">
+          <view class="optbtn-item-wrapper {{showManagerOpt ? 'footer-opt-show1' : ''}}">
+            <view class="optbtn-item" bindtap="handleClearChips">清除所有筹码</view>
+            <view class="optbtn-item" bindtap="handleGiveInitChips">发放起始筹码</view>            
+            <view class="optbtn-item" bindtap="handleGameOver">核算并结束</view>
+          </view>
+          <view class="manager opt-btn" bindtap="handleClickManagerOpt">
+            <view>
+              <view wx:if="{{!showManagerOpt}}">                
+                <view>操作</view>
+              </view>
+              <view wx:else>
+                <view class="closex">X</view>
+              </view>
+            </view>
+          </view>
+        </view>                    
+      </view>
+    </view>
+  </view>
+</view>

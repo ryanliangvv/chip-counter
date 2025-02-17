@@ -1,3 +1,12 @@
+function calcAllBuyin(buyinList) {
+  var total = 0;  
+  for (var index = 0; index < buyinList.length; index++) {
+    var e = buyinList[index];
+    total = total + e.buyinCount || 0    
+  }  
+  return total
+}
+
 function formatChipsCount(number1) {
    // 处理负数，取绝对值来做格式化，最后再加回负号
    var number = Math.abs(number1);
@@ -109,10 +118,10 @@ function formatChipsCount(number1) {
 // }
 
 module.exports = {
-  formatChipsCount: formatChipsCount,
+  calcAllBuyin: calcAllBuyin,
+  formatChipsCount: formatChipsCount,  
   // formatTime,
   // formatLocation,
-  // fib,
-  // formatDateTime,
+  // fib,  
   // compareVersion
 }

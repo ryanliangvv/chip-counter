@@ -27,8 +27,8 @@
 }
 
 .avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 108rpx;
+  height: 108rpx;
   /* background-color: #e5e5e5; */
   border-radius: 50%;
   transform: scale(1.8);
@@ -36,10 +36,11 @@
 
 .username {
   color: #333;
-  font-size: 32rpx;
+  font-size: 34rpx;
   margin-top: 20rpx;
   color: rgba(0, 0, 0, 0.9);
   max-width: 200rpx;
+  margin-left: 38rpx;
 }
 
 .settings_container {

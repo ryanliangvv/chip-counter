@@ -28,48 +28,31 @@ Page({
     setChipsFrom: '',
 
     list: [
-      {
-        userId: '1',
-        avatar: '',
-        nickname: '炸弹玩家玩家玩家玩家',
-        open: false,
-        allBuyin: 1000,
-        totalCount: 3000,
-        buyinList: [
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-        ],
-        needCheck: false,
-        buyinCount: 0,
-        buyinTime: null,
-      },
-      {
-        userId: '1',
-        avatar: '',
-        nickname: '炸弹玩家1',
-        open: false,        
-        allBuyin: 3000,
-        totalCount: 1000,
-        profitCount: -2000,
-        buyinList: [
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"},
-          {buyinCount: 200, buyinTime: "21:00:00"}
-        ],
-        needCheck: true,
-        buyinCount: 200,
-        buyinTime: "21:00:00",
-      },       
+      // {
+      //   userId: '1',
+      //   avatar: '',
+      //   nickname: '玩家1',
+      //   open: false,
+      //   allBuyin: 1000,
+      //   totalCount: 3000,
+      //   buyinList: [
+      //     {buyinCount: 200, buyinTime: "21:00:00"},
+      //     {buyinCount: 200, buyinTime: "21:00:00"},
+      //     {buyinCount: 200, buyinTime: "21:00:00"},
+      //     {buyinCount: 200, buyinTime: "21:00:00"},
+      //   ],
+      //   needCheck: false,
+      //   buyinCount: 0,
+      //   buyinTime: null,
+      // }
     ]
   },
   handleInitData() {
     // 获取并设置初始数据
-    // wx.cloud.callFunction({ name: 'room', data: { type: 'createRoom'} }).then(res => {
-      
-    // }).catch(console.error)
+    wx.cloud.callFunction({ name: 'game', data: { type: 'getGameData'} }).then(res => {
+      const { list } = res.result
+      this.setData({list})
+    }).catch(console.error)
   },
   handleOpenLisetItem(e) {
     const id = e.currentTarget.id

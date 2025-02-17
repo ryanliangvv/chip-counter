@@ -7,7 +7,7 @@ Page({
    */
   data: {
     openId: '',
-    showTip: false,
+    showTip: true,
     title:"",
     content:""
   },

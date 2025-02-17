@@ -1,5 +1,3 @@
-const { envList } = require("../../envList");
-
 Page({
   data: {
     isInRoom: false,
@@ -16,7 +14,28 @@ Page({
     // 页面从后台进入前台时执行的代码
     this.handleInitData()
   },
-  handleInitData() {
+  async handleInitData() {
+    // 查当前用户信息，没有提示用户去设置
+    const res = await wx.cloud.callFunction({ name: 'user', data: { type: 'getCurrUser'} })
+    const currUser = res.result
+    console.log("AAAA", currUser)
+    // if (!currUser.nickname) {
+    //   wx.showModal({
+    //     title: '提示',         
+    //     content: '请先去 “我的” 页面设置昵称和头像',
+    //     showCancel: false,                
+    //     confirmText: '确定',
+    //     confirmColor: '#3CC51F',
+    //     success (res) {
+    //       if (res.confirm) {
+    //         wx.switchTab({ url: "/pages/user-center/index" })
+    //       }
+    //     }
+    //   })
+    //   return
+    // }
+
+    // 查房间信息
     wx.cloud.callFunction({ name: 'room', data: { type: 'getCurrRoom'} }).then(res => {
       let data = { isInRoom: false, roomNo: '', password: '', isOwner: false, roomId: '' }
       const { room } = res.result;

@@ -1,12 +1,12 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init({
-  env: "dev-9g35dbvy13585fb9"
-})
+const conf = require('../../config')
+cloud.init({ env: conf.envId })
 
 const db = cloud.database();
 const roomCol = db.collection('room');
 const userRoomCol = db.collection('user_room');
+const userCol = db.collection('user');
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
         isOwner
       }
     }
-  }
+  }  
   return {
     room,
   }
