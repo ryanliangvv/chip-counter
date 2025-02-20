@@ -10,6 +10,7 @@
             <view class="rank coltitle">排名</view>
             <view class="player-info coltitle">玩家</view>
             <view class="buyin coltitle">买入</view>
+            <view class="total coltitle">手上码量</view>
             <view class="profit coltitle">盈亏</view>
           </view>
         </view>
@@ -22,7 +23,7 @@
                 <view class="kind-list-text">{{item.nickname}}</view>
               </view>
               <view class="buyin">{{ fm.formatChipsCount(fm.calcAllBuyin(item.buyinList)) }}</view>
-              <!-- <view class="total">{{ fm.formatChipsCount(item.totalCount) }}</view> -->
+              <view class="total">{{ fm.formatChipsCount(item.totalCount) }}</view>
               <view class="profit">{{ fm.formatChipsCount(item.totalCount - fm.calcAllBuyin(item.buyinList)) }}</view>
             </view>
             <view class="buyinfo-wrapper {{item.needCheck || item.open ? 'buyinfo-wrapper-show' : ''}}">
@@ -30,7 +31,7 @@
                 <view>买入：{{item.buyinCount}}</view>
                 <view>时间：{{item.buyinTime}}</view>
               </view>
-            </view>            
+            </view>
           </view>
         </block>
       </view>

@@ -228,4 +228,7 @@
  .profit {
   width: 120rpx;
   text-align: center;
- }  
+ }
+ .kind-list-item-hd {
+    padding: 10px 15px;
+ }
