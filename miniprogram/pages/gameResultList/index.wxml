@@ -12,11 +12,15 @@
         </view>
       </view> -->
       
-      <view id="{{item.time}}" class="list-item" wx:for-items="{{gameResults}}" wx:key="{{item.time}}" bindtap="handeViewItemDetail">
-        <view>时间: {{fm.formatDate(item.time, 'yyyy-MM-dd HH:mm') }}</view>
-        <view>人数: {{item.list.length}}</view>
-        <image class="arrow_icon" src="../../images/arrow.svg" />
+      <view id="{{item.time}}" class="list-item-wrapper"  wx:for-items="{{gameResults}}" wx:key="{{item.time}}"> 
+        <button id="{{item.time}}" data-count="{{item.list.length}}" class="delbtn" plain="true" bindtap="handleDelRecord">删</button>
+        <view class="list-item" id="{{item.time}}" bindtap="handeViewItemDetail">          
+          <view>时间: {{fm.formatDate(item.time, 'yyyy-MM-dd HH:mm') }}</view>
+          <view>人数: {{item.list.length}}</view>
+          <image class="arrow_icon" src="../../images/arrow.svg" />        
+        </view>
       </view>
+
     </view>
   </view>  
 </view>

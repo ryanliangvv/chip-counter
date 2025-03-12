@@ -89,7 +89,7 @@ Page({
     this.setShowManagerOpt(newVal)
   },  
   handleGiveInitChips(e) {
-    const newData = { setChipsFrom: "发放起始筹码", showSetChipsCount: true, showManagerOpt: false}
+    const newData = { setChipsFrom: "给所有人筹码", showSetChipsCount: true, showManagerOpt: false}
     this.setData(newData)
   },
   handleBuyinChips(e) {    

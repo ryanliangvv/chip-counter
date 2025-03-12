@@ -187,9 +187,14 @@ Page({
       nickname,
       open: false,      
       totalCount: 0,
-      buyinList: [],        
+      buyinList: [],
     }
-    this.setData({ list: [...list, newU] })
+    this.setData({newUserNickname: '', list: [...list, newU] })
+    wx.showToast({
+      title: `${nickname} 添加成功`,
+      icon: 'success',
+      duration: 1000
+    });
   },
   handleDelPlayer(e) {
     const userId = e.currentTarget.id    
@@ -252,7 +257,7 @@ Page({
       newGameResults = [gameResult, ...storedGameResults]
     }
     // 只保存近期10次的记录
-    newGameResults = newGameResults.slice(0, 10);
+    newGameResults = newGameResults.slice(0, 20);
     wx.setStorageSync('gameResults', newGameResults);
     this.setData({ showManagerOpt: false })
     wx.navigateTo({ url: "/pages/gameResultDetail/index?i=0" })

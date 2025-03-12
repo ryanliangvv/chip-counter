@@ -65,7 +65,7 @@
         <view class="footer-opt-item1 {{showManagerOpt ? 'footer-opt-show1' : ''}}">
           <view class="optbtn-item-wrapper {{showManagerOpt ? 'footer-opt-show1' : ''}}">
             <view class="optbtn-item" bindtap="handleClearChips">清除所有筹码</view>
-            <view class="optbtn-item" bindtap="handleGiveInitChips">发放起始筹码</view>            
+            <view class="optbtn-item" bindtap="handleGiveInitChips">给所有人筹码</view>            
             <view class="optbtn-item" bindtap="handleGameOver">核算并结束</view>
           </view>
           <view class="manager opt-btn" bindtap="handleClickManagerOpt">

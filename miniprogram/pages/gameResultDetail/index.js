@@ -1,6 +1,5 @@
 Page({  
-  onLoad: function(options) {
-    console.log("CCCCC", options)
+  onLoad: function(options) {    
     if (!options.i) return
     const index = parseInt(options.i)
     const gameResults = wx.getStorageSync('gameResults');
