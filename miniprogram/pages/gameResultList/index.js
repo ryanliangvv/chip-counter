@@ -36,7 +36,7 @@ Page({
     const count = e.currentTarget.dataset.count
     const self = this
     const msg = `时间：${tt}，人数：${count}`
-
+    
     wx.showModal({
       title: '确定删除该记录吗？',
       content: msg,

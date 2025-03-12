@@ -134,6 +134,14 @@ Page({
         }
       });
     } else if (setChipsFrom == 'buyin') {
+      if (!setChipsCount) {
+        wx.showToast({
+          title: `设置买入不可为空`,
+          icon: 'error',
+          duration: 1000
+        });
+        return
+      }
       // 买入
       wx.showModal({
         title: '注意',
@@ -147,6 +155,11 @@ Page({
               }
             }
             self.setData({ list, showSetChipsCount: false })
+            wx.showToast({
+              title: `设置买入成功`,
+              icon: 'success',
+              duration: 1000
+            });
           }
         }
       });      
@@ -159,6 +172,11 @@ Page({
         }
       }
       this.setData({ list, showSetChipsCount: false })
+      wx.showToast({
+        title: `设置码量成功`,
+        icon: 'success',
+        duration: 1000
+      });
     }    
   },  
   handleCancelAddPlayer() {
